@@ -37,9 +37,9 @@ def augmentation(file_extension):
                 elif choice_pattern == "rotate_180":
                     image = cv2.rotate(image, cv2.ROTATE_180)
                     for point in json_file["shapes"]:
-                        temp_x,temp_y = point["points"][0][1],point["points"][0][0]
-                        point["points"][0][0] = image.shape[0] - temp_x
-                        point["points"][0][1] = image.shape[1] - temp_y
+                        temp_x,temp_y = point["points"][0][0],point["points"][0][1]
+                        point["points"][0][0] = json_file["imageWidth"]- temp_x
+                        point["points"][0][1] = json_file["imageHeight"] - temp_y
                 elif choice_pattern == "rotate_270":
                     image = cv2.rotate(image, cv2.ROTATE_90_COUNTERCLOCKWISE)
                     for point in json_file["shapes"]:
