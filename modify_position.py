@@ -50,4 +50,5 @@ def position_checker(image_path,top,middle,thumb):
     else:
         #정상적인 왼손
         pass
+    #반환 값 이미지, 3 keypoints의 좌표값
     return [img,[top,middle,thumb]]
