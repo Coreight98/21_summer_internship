@@ -1,0 +1,9 @@
+.DS_Store
+*.log
+BA_label_point/
+deep-high-resolution-net.pytorch/
+json_new/
+labeling/
+temp_png/
+venv/
+

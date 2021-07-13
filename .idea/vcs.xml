@@ -2,5 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/deep-high-resolution-net.pytorch" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/deep-high-resolution-net.pytorch/cocoapi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/deep-high-resolution-net.pytorch/tensorboardX" vcs="Git" />
   </component>
 </project>
