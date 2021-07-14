@@ -2,7 +2,7 @@ import os, sys
 from xml.etree.ElementTree import parse, Element, SubElement, ElementTree, dump
 import json
 
-path = '/home/crescom01/PycharmProjects/handbone_key_point/BA_label_point/json/train'
+path = '/home/crescom01/PycharmProjects/handbone_key_point/BA_test_pic'
 file_list = [file for file in os.listdir(path) if file.endswith(".json")]
 for filename in file_list:
     with open(os.path.join(path, filename)) as f:
@@ -17,7 +17,7 @@ for filename in file_list:
         xmin.append( '<xmin>' + str(_['points'][0][0]) + '</xmin>')
         # print(xmin)
         ymin.append('<ymin>' + str(_['points'][0][1]) + '</ymin>')
-    with open('/home/crescom01/PycharmProjects/handbone_key_point/json_new/train' + '/' +
+    with open('/home/crescom01/PycharmProjects/handbone_key_point/test_image_xml' + '/' +
               json_object['imagePath'].split('.jpg')[0] + '.xml', "w") as file:
         for i in range(len(labelname)):
             file.write(labelname[i] + "\n")
