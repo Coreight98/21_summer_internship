@@ -2,10 +2,11 @@ import csv
 import json
 import os
 import cv2
-test_result_csv_path = '/home/crescom01/PycharmProjects/handbone_key_point/deep-high-resolution-net.pytorch/data/handbone/test_save/c_handbone_fix_total_add_prob.csv'
+test_result_csv_path = '/home/crescom01/PycharmProjects/handbone_key_point/output_bbox/c_handbone_fix_total_add_prob_by_bbox.csv'
+#test_result_csv_path = '/home/crescom01/PycharmProjects/handbone_key_point/deep-high-resolution-net.pytorch/data/handbone/test_save/c_handbone_fix_total_add_prob.csv'
 test_image_path='/home/crescom01/PycharmProjects/handbone_key_point/BA_test_pic/image'
 test_json_path='/home/crescom01/PycharmProjects/handbone_key_point/BA_test_pic/json'
-save_abnormal_path = '/home/crescom01/PycharmProjects/handbone_key_point/abnormal_data'
+save_abnormal_path = '/home/crescom01/PycharmProjects/handbone_key_point/abnormal_bbox'
 def check_over_boundary(boundary_size):
     dict_from_csv = {}
     result_over = []

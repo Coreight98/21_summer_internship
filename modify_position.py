@@ -65,7 +65,7 @@ def position_checker(image_path,top,middle,thumb):
         img = cv2.circle(img, (int(thumb[0]),int(thumb[1])), 6, (0, 0, 255), -1)
         angle = math.atan2(top[0] - middle[0], middle[1] - top[1])
         angle = math.degrees(angle)
-        if -60<= angle<=-30 or 30<= angle<=60:
+        if -60<=angle<=60:
             img = rotation(img,angle)
         # plt.imshow(img)
         # plt.show()
