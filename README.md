@@ -4,9 +4,6 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>hrnet 학습 결과</title>
-    <style>
-</style>
   </head>
   <body>
     <article id="cfb586aa-aa88-48ab-acbf-c0bd53e9f503" class="page sans">
