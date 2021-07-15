@@ -43,7 +43,7 @@ def check_over_boundary(boundary_size):
                     result_over.append([image_name,str("file_name: {}, over: {}, real_distance: {} px, weaky_distance: {} px" .format(image_name, label,real_distance,weaky_case_boundary_value))])
             if temp_result[1]:
                 to_save_abnormal_data.append(temp_result)
-    print("boundary_size is {}, count of overrange : {}, ratio: {}%".format(boundary_size, len(result_over),len(result_over)/len(dict_from_csv['file_name'])*100))
+    print("boundary_size is {}, count of overrange : {}, ratio: {}%".format(boundary_size, len(result_over),100 - len(result_over)/len(dict_from_csv['file_name'])*100))
     if not os.path.exists(save_abnormal_path+'/'+'boudary'+str(boundary_size)):
         os.makedirs(save_abnormal_path+'/'+'boudary'+str(boundary_size))
 
@@ -68,3 +68,4 @@ check_over_boundary(10)
 check_over_boundary(15)
 check_over_boundary(20)
 check_over_boundary(30)
+check_over_boundary(40)
