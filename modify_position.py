@@ -6,6 +6,19 @@ import numpy as np
 import json
 import os
     # 3 keypoints 좌표 필요
+def rotation(image, angleInDegrees):
+    h, w = image.shape[:2]
+    img_c = (w / 2, h / 2)
+    rot = cv2.getRotationMatrix2D(img_c, angleInDegrees, 1)
+    rad = math.radians(angleInDegrees)
+    sin = math.sin(rad)
+    cos = math.cos(rad)
+    b_w = int((h * abs(sin)) + (w * abs(cos)))
+    b_h = int((h * abs(cos)) + (w * abs(sin)))
+    rot[0, 2] += ((b_w / 2) - img_c[0])
+    rot[1, 2] += ((b_h / 2) - img_c[1])
+    outImg = cv2.warpAffine(image, rot, (b_w, b_h), flags=cv2.INTER_LINEAR)
+    return outImg
 def position_checker(image_path,top,middle,thumb):
     img = cv2.imread(image_path)
     try:
@@ -44,12 +57,16 @@ def position_checker(image_path,top,middle,thumb):
         image_height, image_width = img.shape[0], img.shape[1]
         if middle[0] < image_width//2 and top[0]< image_width//2 and thumb[0]< image_width//2:
             flip_thumb_x = image_width - thumb[0]
-            cutting_x_position = thumb[0]+flip_thumb_x/4
+            cutting_x_position = thumb[0]+flip_thumb_x/5
             img = img[0:image_height, 0: int(cutting_x_position)]
         #좌표에 점 찍기
         img = cv2.circle(img, (int(top[0]),int(top[1])), 6, (0, 0, 255), -1)
         img = cv2.circle(img, (int(middle[0]),int(middle[1])), 6, (0, 0, 255), -1)
         img = cv2.circle(img, (int(thumb[0]),int(thumb[1])), 6, (0, 0, 255), -1)
+        angle = math.atan2(top[0] - middle[0], middle[1] - top[1])
+        angle = math.degrees(angle)
+        if -60<= angle<=-30 or 30<= angle<=60:
+            img = rotation(img,angle)
         # plt.imshow(img)
         # plt.show()
 
@@ -108,8 +125,8 @@ def position_checker(image_path,top,middle,thumb):
 image_path = '/home/crescom01/PycharmProjects/handbone_key_point/BA_label_point/image/'
 json_path = '/home/crescom01/PycharmProjects/handbone_key_point/BA_label_point/json/'
 test_output_path = '/home/crescom01/PycharmProjects/handbone_key_point/test_output'
-#file_list = [file for file in os.listdir(image_path) if file.endswith('.jpg')]
-file_list = ['1455.jpg','1469.jpg']
+file_list = [file for file in os.listdir(image_path) if file.endswith('.jpg')]
+#file_list = ['1455.jpg','1469.jpg']
 #file_list = ['kh_219.jpg']
 for f in file_list:
     image_name = f.split('.jpg')[0]
